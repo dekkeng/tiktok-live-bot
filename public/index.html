@@ -19,7 +19,7 @@
 
     <script>
         function generateOverlay() {
-            let username = "indymeedokmai";
+            let username = $('#uniqueIdInput').val();
             let url = `/obs.html?username=${username}&showLikes=1&showChats=1&showGifts=1&showFollows=1&showJoins=1&bgColor=rgb(24,23,28)&fontColor=rgb(227,229,235)&fontSize=1.3em`;
         
             if(username) {
@@ -32,7 +32,13 @@
 </head>
 <body>
     <div class="head">
-        <h1>PLOYLIN LIVE BOT</h1>  
+        <h1>PLOYLIN LIVE BOT</h1>    
+    </div>
+
+    <div class="inputFields">
+        <input type="text" id="uniqueIdInput" value="ploy.lin">
+        <input type="button" id="connectButton" value="connect">
+        <a href="#" onclick="generateOverlay()">Generate Overlay URL</a>
     </div>
 
     <table class="splitstatetable">
@@ -54,11 +60,11 @@
                 </div>
             </td>
             <td>
-                <div class="giftcontainer">
-                    <h3 class="containerheader">Gifts</h3>
-                </div>
                 <div class="songcontainer">
                     <h3 class="containerheader">Songs</h3>
+                </div>
+                <div class="giftcontainer">
+                    <h3 class="containerheader">Gifts</h3>
                 </div>
             </td>
         </tr>

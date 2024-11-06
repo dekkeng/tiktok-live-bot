@@ -29,8 +29,7 @@ class TikTokIOConnection {
         this.socket.on('tiktokDisconnected', (errMsg) => {
             console.warn(errMsg);
             if (errMsg && errMsg.includes('LIVE has ended')) {
-                this.uniqueId = null;                
-                isConnected = false;
+                this.uniqueId = null;
             }
         });
     }

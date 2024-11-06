@@ -1,3 +1,4 @@
+// This will use the demo backend if you open index.html locally via file://, otherwise your server will be used
 let backendUrl = location.protocol === 'file:' ? "https://tiktok-chat-reader.zerody.one/" : undefined;
 let connection = new TikTokIOConnection(backendUrl);
 
@@ -8,15 +9,22 @@ let diamondsCount = 0;
 
 // These settings are defined by obs.html
 if (!window.settings) window.settings = {
-    username: 'lazysleepyyy',
+    showSongs: 1
 };
 
 $(document).ready(() => {
+    $('#connectButton').click(connect);
+    $('#uniqueIdInput').on('keyup', function (e) {
+        if (e.key === 'Enter') {
+            connect();
+        }
+    });
+
     if (window.settings.username) connect();
 })
 
 function connect() {
-    let uniqueId = window.settings.username || "ploy.lin";
+    let uniqueId = window.settings.username || $('#uniqueIdInput').val();
     if (uniqueId !== '') {
 
         $('#stateText').text('Connecting...');
@@ -209,16 +217,16 @@ connection.on('member', (msg) => {
 
 // New chat comment received
 connection.on('chat', (msg) => {
-    if (window.settings.showChats !== "0") {
-        addChatItem('', msg, msg.comment);
-    }
-
     if (window.settings.showSongs !== "0") {
         let txt = msg.comment.toLowerCase()
         if (txt.startsWith("🎧") || txt.startsWith("🔈")) {
             addSongItem(msg);
         }
     }
+
+    if (window.settings.showChats === "0") return;
+
+    addChatItem('', msg, msg.comment);
 })
 
 // New gift received
