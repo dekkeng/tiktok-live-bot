@@ -31,7 +31,8 @@ function connect() {
         $('#stateText').text('Connecting...');
 
         connection.connect(uniqueId, {
-            enableExtendedGiftInfo: true
+            enableExtendedGiftInfo: true,
+            processInitialData: false,
         }).then(state => {
             //$('#stateText').text(`Connected to roomId ${state.roomId}`);
             $('#stateText').text(``);

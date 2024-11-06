@@ -64,16 +64,16 @@ a {
 }
 
 .chatcontainer {
-    min-width: 400px;
+    max-width: 400px;
     max-width: calc(100vw - 300px);
 }
 
 .giftcontainer {
-    min-width: 400px;
+    max-width: 400px;
     height: calc(100vh - 500px);
 }
 .songcontainer {
-    min-width: 400px;
+    max-width: 400px;
     height: 200px;
 }
 
