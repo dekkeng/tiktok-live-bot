@@ -219,7 +219,7 @@ connection.on('member', (msg) => {
 connection.on('chat', (msg) => {
     if (window.settings.showSongs !== "0") {
         let txt = msg.comment.toLowerCase()
-        if (txt.startsWith("🎧") || txt.startsWith("🔈")) {
+        if (txt.startsWith("@") || txt.startsWith("🎧") || txt.startsWith("🔈")) {
             addSongItem(msg);
         }
     }
