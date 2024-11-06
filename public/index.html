@@ -20,7 +20,7 @@
     <script>
         function generateOverlay() {
             let username = $('#uniqueIdInput').val();
-            let url = `/obs.html?username=${username}&showLikes=1&showChats=1&showGifts=1&showFollows=1&showJoins=1&bgColor=rgb(24,23,28)&fontColor=rgb(227,229,235)&fontSize=1.3em`;
+            let url = `/obs.html?username=${username}`;
         
             if(username) {
                 window.open(url, '_blank');
@@ -36,7 +36,7 @@
     </div>
 
     <div class="inputFields">
-        <input type="text" id="uniqueIdInput" value="ploy.lin">
+        <input type="text" id="uniqueIdInput" value="hi.is.tam">
         <input type="button" id="connectButton" value="connect">
         <a href="#" onclick="generateOverlay()">Generate Overlay URL</a>
     </div>
@@ -55,16 +55,16 @@
     <table class="splitchattable">
         <tr>
             <td>
-                <div class="chatcontainer">
-                    <h3 class="containerheader">Chats</h3>
-                </div>
-            </td>
-            <td>
                 <div class="songcontainer">
                     <h3 class="containerheader">Songs</h3>
                 </div>
                 <div class="giftcontainer">
                     <h3 class="containerheader">Gifts</h3>
+                </div>
+            </td>
+            <td>
+                <div class="chatcontainer">
+                    <h3 class="containerheader">Chats</h3>
                 </div>
             </td>
         </tr>

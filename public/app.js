@@ -20,6 +20,8 @@ $(document).ready(() => {
         }
     });
 
+    window.settings.username = $('#uniqueIdInput').val();
+
     if (window.settings.username) connect();
 })
 
@@ -32,7 +34,8 @@ function connect() {
         connection.connect(uniqueId, {
             enableExtendedGiftInfo: true
         }).then(state => {
-            $('#stateText').text(`Connected to roomId ${state.roomId}`);
+            //$('#stateText').text(`Connected to roomId ${state.roomId}`);
+            $('#stateText').text(``);
 
             // reset stats
             viewerCount = 0;
@@ -106,18 +109,18 @@ function addSongItem(data) {
     let txt = data.comment.toLowerCase().replace("🎧", "").replace("🔈", "").trim();
     let container = location.href.includes('obs.html') ? $('.eventcontainer') : $('.songcontainer');
 
-    if (container.find('div').length > 500) {
-        container.find('div').slice(0, 200).remove();
+    if (container.find('div').length > 250) {
+        container.find('div').slice(0, 100).remove();
     }
 
     container.find('.temporary').remove();
 
     container.append(`
-        <div class=${summarize ? 'temporary' : 'static'}>
+        <div class='static'>
             <img class="miniprofilepicture" src="${data.profilePictureUrl}">
             <span>
                 <b>${generateUsernameLink(data)}:</b> 
-                <span style="color:${color}">${sanitize(txt)}</span>
+                <span style="">${sanitize(txt)}</span>
             </span>
         </div>
     `);
@@ -219,7 +222,7 @@ connection.on('member', (msg) => {
 connection.on('chat', (msg) => {
     if (window.settings.showSongs !== "0") {
         let txt = msg.comment.toLowerCase()
-        if (txt.startsWith("@") || txt.startsWith("🎧") || txt.startsWith("🔈")) {
+        if (txt.startsWith("🎧") || txt.startsWith("🔈")) {
             addSongItem(msg);
         }
     }
