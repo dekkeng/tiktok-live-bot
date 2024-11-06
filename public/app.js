@@ -6,11 +6,10 @@ let connection = new TikTokIOConnection(backendUrl);
 let viewerCount = 0;
 let likeCount = 0;
 let diamondsCount = 0;
+let songList = [];
 
 // These settings are defined by obs.html
-if (!window.settings) window.settings = {
-    showSongs: 1
-};
+if (!window.settings) window.settings = {};
 
 $(document).ready(() => {
     $('#connectButton').click(connect);
@@ -106,7 +105,10 @@ function addChatItem(color, data, text, summarize) {
 
 
 function addSongItem(data) {    
-    let txt = data.comment.toLowerCase().replace("🎧", "").replace("🔈", "").trim();
+    let txt = sanitize(data.comment.toLowerCase().replace("🎧", "").replace("🔈", "").trim());
+
+    songList.push(txt);
+
     let container = location.href.includes('obs.html') ? $('.eventcontainer') : $('.songcontainer');
 
     if (container.find('div').length > 250) {
@@ -115,12 +117,14 @@ function addSongItem(data) {
 
     container.find('.temporary').remove();
 
+    let search = encodeURIComponent(txt);
+
     container.append(`
         <div class='static'>
             <img class="miniprofilepicture" src="${data.profilePictureUrl}">
             <span>
                 <b>${generateUsernameLink(data)}:</b> 
-                <span style="">${sanitize(txt)}</span>
+                <a href="https://www.youtube.com/results?search_query=%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%87+${search}" target="_blank"><span style="">${txt}</span></a>
             </span>
         </div>
     `);
@@ -220,16 +224,16 @@ connection.on('member', (msg) => {
 
 // New chat comment received
 connection.on('chat', (msg) => {
-    if (window.settings.showSongs !== "0") {
-        let txt = msg.comment.toLowerCase()
-        if (txt.startsWith("🎧") || txt.startsWith("🔈")) {
-            addSongItem(msg);
-        }
-    }
-
     if (window.settings.showChats === "0") return;
 
     addChatItem('', msg, msg.comment);
+
+    if (window.settings.showSongs === "0") return;
+
+    let txt = msg.comment.toLowerCase()
+    if (txt.startsWith("🎧") || txt.startsWith("🔈")) {
+        addSongItem(msg);
+    }
 })
 
 // New gift received
