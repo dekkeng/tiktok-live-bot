@@ -25,7 +25,7 @@ $(document).ready(() => {
 })
 
 function connect() {
-    let uniqueId = window.settings.username || $('#uniqueIdInput').val();
+    let uniqueId = window.settings.username = $('#uniqueIdInput').val();
     if (uniqueId !== '') {
 
         $('#stateText').text('Connecting...');
