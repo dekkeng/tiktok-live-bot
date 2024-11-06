@@ -1,4 +1,3 @@
-// This will use the demo backend if you open index.html locally via file://, otherwise your server will be used
 let backendUrl = location.protocol === 'file:' ? "https://tiktok-chat-reader.zerody.one/" : undefined;
 let connection = new TikTokIOConnection(backendUrl);
 
@@ -8,21 +7,16 @@ let likeCount = 0;
 let diamondsCount = 0;
 
 // These settings are defined by obs.html
-if (!window.settings) window.settings = {};
+if (!window.settings) window.settings = {
+    username: 'lazysleepyyy',
+};
 
 $(document).ready(() => {
-    $('#connectButton').click(connect);
-    $('#uniqueIdInput').on('keyup', function (e) {
-        if (e.key === 'Enter') {
-            connect();
-        }
-    });
-
     if (window.settings.username) connect();
 })
 
 function connect() {
-    let uniqueId = window.settings.username || $('#uniqueIdInput').val();
+    let uniqueId = window.settings.username || "ploy.lin";
     if (uniqueId !== '') {
 
         $('#stateText').text('Connecting...');
@@ -89,6 +83,33 @@ function addChatItem(color, data, text, summarize) {
             <span>
                 <b>${generateUsernameLink(data)}:</b> 
                 <span style="color:${color}">${sanitize(text)}</span>
+            </span>
+        </div>
+    `);
+
+    container.stop();
+    container.animate({
+        scrollTop: container[0].scrollHeight
+    }, 400);
+}
+
+
+function addSongItem(data) {    
+    let txt = data.comment.toLowerCase().replace("🎧", "").replace("🔈", "").trim();
+    let container = location.href.includes('obs.html') ? $('.eventcontainer') : $('.songcontainer');
+
+    if (container.find('div').length > 500) {
+        container.find('div').slice(0, 200).remove();
+    }
+
+    container.find('.temporary').remove();
+
+    container.append(`
+        <div class=${summarize ? 'temporary' : 'static'}>
+            <img class="miniprofilepicture" src="${data.profilePictureUrl}">
+            <span>
+                <b>${generateUsernameLink(data)}:</b> 
+                <span style="color:${color}">${sanitize(txt)}</span>
             </span>
         </div>
     `);
@@ -188,9 +209,16 @@ connection.on('member', (msg) => {
 
 // New chat comment received
 connection.on('chat', (msg) => {
-    if (window.settings.showChats === "0") return;
+    if (window.settings.showChats !== "0") {
+        addChatItem('', msg, msg.comment);
+    }
 
-    addChatItem('', msg, msg.comment);
+    if (window.settings.showSongs !== "0") {
+        let txt = msg.comment.toLowerCase()
+        if (txt.startsWith("🎧") || txt.startsWith("🔈")) {
+            addSongItem(msg);
+        }
+    }
 })
 
 // New gift received
