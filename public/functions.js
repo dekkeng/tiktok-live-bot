@@ -345,7 +345,7 @@ function addChatItem(color, data, text, cont) {
 		</div>
 	</li>`);
 
-    let txt = data.comment.toLowerCase()
+    let txt = text.toLowerCase()
     if (
 		txt.startsWith("🎧") || 
 		txt.startsWith("🔈") || 
