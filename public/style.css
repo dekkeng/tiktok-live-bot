@@ -3,6 +3,7 @@ body {
     font-family: 'Prompt', Helvetica, sans-serif;
     /*min-width: 800px;*/
     font-weight: 300;
+    --bs-nav-link-color: #e6f4ff;
 }
 
 .c-pointer {cursor: pointer;}
