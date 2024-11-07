@@ -181,13 +181,13 @@ function connect() {
 				},*/
 			//? state.link_mic.rival_anchor_id": 6932573195062085000,
 		}).catch(errorMessage => {
-			$('#stateText').text("อย่า Connect บ่อยเกิน กำลังลองอีกครั้งใน 30 วินาที ["+errorMessage+"]");
+			$('#stateText').text("อย่า Connect บ่อยเกิน กำลังลองอีกครั้งใน 5 นาที ["+errorMessage+"]");
 
 			// schedule next try if obs username set
 			if (window.settings.username) {
 				setTimeout(() => {
 					connect(window.settings.username);
-				}, 30000);
+				}, 300000);
 			}
 		})
 	} else {
