@@ -1,23 +1,5 @@
 let Config = {
 	buildNames(json){
-		let datalist = document.getElementById('datalistOptions');
-		datalist.innerHTML = ''
-		//let nameList = document.getElementById('name-list');
-		let html = '', gsound = '', notes = ''
-		for(const item of json['names']){
-			datalist.appendChild(new Option(item,item));
-			html += `<li data-list-name="${item}"
-				class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-				${item}
-				<span class="c-pointer" data-name="${item}" onclick="removeName(this)">
-					<svg fill="#842029" xmlns="http://www.w3.org/2000/svg"
-						width="24" height="24" viewBox="0 0 24 24">
-						<use href="#svg-trash"></use>
-					</svg>
-				</span>
-			</li>`
-		}
-		$('#name-list').html(html)
 	},
 	buildNotes(json){
 		let notes = ''
