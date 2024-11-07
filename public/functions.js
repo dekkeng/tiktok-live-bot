@@ -367,7 +367,7 @@ function addChatItem(color, data, text, cont) {
 		let songTable = $('#song-table tbody')
 		songTable.prepend(`
 			<tr data-song="${song}">
-				<td class="col-4 text-break">${data.username}</td>
+				<td class="col-4 text-break">${generateUsernameLink(data)}</td>
 				<td class="col-8 text-break">
 					<a href="https://www.youtube.com/results?search_query=%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%87+${encodeURIComponent(song)}" target="_blank">
 						<span style="">
