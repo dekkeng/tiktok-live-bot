@@ -1,3 +1,9 @@
+package-lock-old.json
+public/tt-usernames.json
+
+#Google Spreadsheet API Key File
+keys.json
+
 # Logs
 logs
 *.log
@@ -102,3 +108,12 @@ dist
 
 # TernJS port file
 .tern-port
+/public/tt-usernames.json
+/tt-usernames.js
+/public/config.json
+public/config.json
+**/config.json
+.vscode/TikTok-Chat-Reader.code-workspace
+
+/public/test.html
+toDoData.json
