@@ -346,8 +346,24 @@ function addChatItem(color, data, text, cont) {
 	</li>`);
 
     let txt = data.comment.toLowerCase()
-    if (txt.startsWith("🎧") || txt.startsWith("🔈") || txt.startsWith("📢") || txt.startsWith("🔉") || txt.startsWith("🔊")) {
-		let song = sanitize(txt.toLowerCase().replace("🎧", "").replace("🔈", "").replace("📢", "").replace("🔉", "").replace("🔊", "").trim());
+    if (
+		txt.startsWith("🎧") || 
+		txt.startsWith("🔈") || 
+		txt.startsWith("📢") || 
+		txt.startsWith("🔉") || 
+		txt.startsWith("🔊") || 
+		txt.startsWith("🎶") || 
+		txt.startsWith("🎵")
+	) {
+		let song = sanitize(txt.toLowerCase()
+						.replace("🎧", "")
+						.replace("🔈", "")
+						.replace("📢", "")
+						.replace("🔉", "")
+						.replace("🔊", "")
+						.replace("🎶", "")
+						.replace("🎵", "")
+						.trim());
 		let songTable = $('#song-table tbody')
 		songTable.prepend(`
 			<tr data-song="${song}">
