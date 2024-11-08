@@ -17,6 +17,7 @@ let roomDisplayId = '';
 let roomDisplayNickname = '';
 let roomStart = '';
 let roomEnd = '';
+let timeStatInterval = null
 
 let playSounds = 1;
 let saveGifts = 1;
@@ -64,7 +65,7 @@ function connect() {
 					<div class="col-12">
 						<div class="fs-4 text-center">
 							${state.roomInfo.owner.nickname}							
-							Started: ${display_start}
+							เริ่มไลฟ์: ${display_start}
 						</div>
 					</div>
 				</div>`);
@@ -156,6 +157,10 @@ function connect() {
 				}
 			}
 
+			timeStatInterval = setInterval(() => {
+				updateLiveTime()
+			}, 1000);
+			
 			// the scores when connected
 			//? state.link_mic.battle_scores
 				/*[
@@ -590,6 +595,8 @@ connection.on('streamEnd', (actionId) => {
 
 	// schedule next try if obs username set
 	if (window.settings.username) {
+		clearInterval(timeStatInterval)
+		timeStatInterval = null;
 		setTimeout(() => {
 			connect(window.settings.username);
 		}, 30000);

@@ -261,6 +261,16 @@ function updateRoomStats(){
 	$('#diamondsCountStats').val(parseInt(diamondsCount).toLocaleString('en'));
 }
 
+function updateLiveTime(){	
+	var now = Math.floor(Date.now() / 1000);
+	var diff = now - roomStart;	
+	var hour = Math.floor(diff / 3600);
+	diff = diff % 3600;
+	var minute = Math.floor(diff / 60);
+	var second = diff % 60;
+	$('#statInfo').html(`${hour} : ${String(minute).padStart(2, '0')} : ${String(second).padStart(2, '0')}`);
+}
+
 function generateUsernameLink(data){
 	return `<a href="https://tiktok.com/@${data.uniqueId}" title="${data.nickname}" target="_blank" class="usernamelink">${data.nickname}</a>`; /*<button type="button" class="usernamelink btn btn-link" title="${data.nickname}" data-bs-toggle="popover" onclick="openPop()" data-bs-title="${data.nickname}">${data.uniqueId}</button>`; */
 }
