@@ -296,6 +296,10 @@ function insertEmotes(comment, subEmotes) {
 	return comment;
 }
 
+function clearSong(th){
+	$(th).closest('tr').remove();
+}
+
 function addChatItem(color, data, text, cont) {
 	let container = location.href.includes('obs.html') ? $('.eventcontainer') : $(cont);
 	//🚔 👮
@@ -377,13 +381,20 @@ function addChatItem(color, data, text, cont) {
 		let songTable = $('#song-table tbody')
 		songTable.prepend(`
 			<tr data-song="${song}">
-				<td class="col-4 text-break">${generateUsernameLink(data)}</td>
-				<td class="col-8 text-break">
+				<td class="col-4 text-break">${data.nickname}</td>
+				<td class="col-6 text-break">
 					<a href="https://www.youtube.com/results?search_query=%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%87+${encodeURIComponent(song)}" target="_blank">
 						<span style="">
 							${song}
 						</span>
 					</a>
+				</td>
+				<td class="col-2 text-right">
+					<div onclick="clearSong(this)" style="cursor: pointer;">							
+						<svg fill="#ff6a64" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+							<use href="#svg-trash"></use>
+						</svg>
+					</div>
 				</td>
 			</tr>
 		`) 

@@ -160,7 +160,7 @@ function connect() {
 			timeStatInterval = setInterval(() => {
 				updateLiveTime()
 			}, 1000);
-			
+
 			// the scores when connected
 			//? state.link_mic.battle_scores
 				/*[
@@ -209,112 +209,6 @@ if (!window.settings) window.settings = {
 Config.updateConfig();
 
 $(document).ready(() => {
-	$('#delete-note').on('click', ()=>{
-		let name = $('#note-id').val()
-		console.log(name)
-		socket.emit('deleteNote', {
-			name: name
-		})
-	})
-	$('#save-gift-sound').on('click', () => {
-		let gift = $('#group-gift').val(), sound = $('#group-sound').val()
-		socket.emit('saveGiftSound', {
-			gift: gift,
-			sound: '/sounds/'+sound
-		})
-	})
-	$('#play-gift-sound').on('click', () => {
-		let sfile = $('#group-sound').val()
-		sounds.addSound('sounds/'+sfile)
-	})
-	$('#new-note').on('click', () => {
-		$('#note-id').val('new')
-		$('#delete-note').slideUp('fast')
-		$('#new-note-name').val('')
-		$('#new-note-info').val('')
-		$('#new-note-form').collapse('show')
-	})
-	$('#save-note').on('click', () => {
-		let id = $('#note-id').val(),
-		name = $('#new-note-name'),
-		info = $('#new-note-info'),
-		error = false,
-		box = ''
-		if(name.val() == ''){
-			error = true
-			name.addClass('is-invalid')
-		} else {
-			name.removeClass('is-invalid')
-		}
-		if(name.val() == 'new'){
-			error = true
-			name.addClass('is-invalid')
-		}
-		if(info.val() == ''){
-			error = true
-			info.addClass('is-invalid')
-		} else {
-			info.removeClass('is-invalid')
-		}
-		if(error == false){
-			let na2 = name.val().replace("'", "\'").replace('"', '\"')
-				, no2 = info.val()
-			socket.emit('saveNote', {
-				id: id,
-				name: na2,
-				note: no2
-			})
-			if(id == 'new'){
-				$('#note-list').html(`<button type="button" class="m-2 btn btn-outline-secondary"'
-					+'onclick="loadNote('${na2}')">${na2}</button>
-					${$('#note-list').html()}`
-				// , \''+no2.replace("<br>", "\n")+'\'
-				)
-			} else {
-				//$(`#note-list button[onclick="loadNote('${na2}')]`)
-			}
-			$('#new-note-form').collapse('hide')
-			$('#note-id').val('new')
-			$('#new-note-name').val('')
-			$('#new-note-info').val('')
-			Config.updateConfig();
-			//if(Array.isArray(json['notes'][note])){
-			//	box = json['notes'][note][0].replace("'", "\'")
-			//} else {
-			//	box = json['notes'][note].replace("'", "\'")
-			//}
-		}
-	})
-	$('#add-username').on('click', () => {
-		let name = $('#new-username'), uname = name.val()
-		if(uname == ''){
-			// make error
-			name.addClass('is-invalid')
-		} else {
-			if(Config.names.includes(uname)){
-
-			} else {
-				name.removeClass('is-invalid')
-				socket.emit('addToNames', {
-					name : uname
-				})
-			}
-		}
-	})
-
-	$('#copy-table').on('click', () => {
-		//console.log('copy btn clicked')
-		let gt = $('#gifter-table')
-		gt.find('save').removeClass('d-none')
-		let text = gt.html(), textarea = document.getElementById('hidden')
-		textarea.value = text; //.split("	").join(',');
-
-		//console.log('copy')
-		textarea.select();
-		textarea.setSelectionRange(0, textarea.value.length)
-		navigator.clipboard.writeText(textarea.value);
-		textarea.setSelectionRange(0,0)
-	})
 	$('#connectButton').click(connect);
 	$('#uniqueIdInput').on('keyup', function (e) {
 		if (e.key === 'Enter') {
