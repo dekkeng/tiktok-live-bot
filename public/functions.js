@@ -268,7 +268,7 @@ function updateLiveTime(){
 	diff = diff % 3600;
 	var minute = Math.floor(diff / 60);
 	var second = diff % 60;
-	$('#statInfo').html(`${hour} : ${String(minute).padStart(2, '0')} : ${String(second).padStart(2, '0')}`);
+	$('#statInfo').html(`ไลฟ์ยาว ${String(hour).padStart(2, '0')} : ${String(minute).padStart(2, '0')} : ${String(second).padStart(2, '0')}`);
 }
 
 function generateUsernameLink(data){
