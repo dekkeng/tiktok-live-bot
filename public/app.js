@@ -87,7 +87,7 @@ function connect() {
 					<li><a class="dropdown-item" href="https://tiktok.com/@${state.roomInfo.top_fans[i].user.display_id}" target="_blank">
 						<img alt="top gifters pic" class="h-auto rounded-circle" style="width:45px; max-width:45px;" src="${state.roomInfo.top_fans[i].user.avatar_thumb.url_list[0]}">
 						${state.roomInfo.top_fans[i].user.nickname}
-						<small>(${tick} coins)</small>
+						<small>(${tick} points)</small>
 					</a></li>`;
 					//fan_tr += '<tr><td><a href="'+state.roomInfo.top_fans[i].user.display_id+'"><img src="'+state.roomInfo.top_fans[i].user.avatar_thumb.url_list[0]+'" alt="top gifters pic" class="h-auto rounded-circle" style="width:45px; max-width:45px;"></a></td><td><a href="'+state.roomInfo.top_fans[i].user.display_id+'">'+state.roomInfo.top_fans[i].user.nickname+'</a></td><td>'+state.roomInfo.top_fans[i].fan_ticket+' coins</td></tr>';
 				}
@@ -463,6 +463,7 @@ connection.on('liveIntro', (data) => {
 connection.on('envelope', (data) => {
 	console.log('envelope')
 	console.log(data)
+	playSound('treasure')
 	console.log('/envelope')
 })
 connection.on('subscribe', (data) => {

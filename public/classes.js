@@ -90,8 +90,8 @@ class Sounds {
 	volume = 70 // Config.volume
 	//audio = new Audio()
 	addSound(sound){
-		//this.playlist.push(sound)
-    	//this.play()
+		this.playlist.push(sound)
+    	this.play()
 		return true
 	}
 	isPlaying(){
@@ -101,7 +101,7 @@ class Sounds {
 		this.playlist = []
 	}
 	play(){
-		/*if(this.isPlaying() == false && this.playlist[0]){
+		if(this.isPlaying() == false && this.playlist[0]){
 			const audio = new Audio(this.playlist[0])
 			//audio.volume = this.volume;
 			this.playing = true
@@ -113,7 +113,7 @@ class Sounds {
 					this.play()
 				}
 			}
-		}*/
+		}
 	}
 }
 

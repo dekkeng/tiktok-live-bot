@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
             socket.emit('tiktokDisconnected', 'You have opened too many connections or made too many connection requests. Please reduce the number of connections/requests or host your own server instance. The connections are limited to avoid that the server IP gets blocked by TokTok.');
             return;
         }
-
+        options.clientParams = {version_code: ''}
         // Connect to the given username (uniqueId)
         try {
             tiktokConnectionWrapper = new TikTokConnectionWrapper(uniqueId, options, true);

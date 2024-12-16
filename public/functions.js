@@ -242,6 +242,7 @@ function removeGift(th){
 }
 
 function playSound(th){
+	console.log("play ", th)
 	let t = $(th), url = t.data('url'), son = t.find('.s-on')
 	son.toggleClass('d-none')
 	t.find('.s-off').toggleClass('d-none')
