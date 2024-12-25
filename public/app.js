@@ -463,7 +463,7 @@ connection.on('liveIntro', (data) => {
 connection.on('envelope', (data) => {
 	console.log('envelope')
 	console.log(data)
-	playSound('treasure')
+	sounds.addSound(Config["sounds"]["gift"]['treasure'])
 	console.log('/envelope')
 })
 connection.on('subscribe', (data) => {
