@@ -15,7 +15,7 @@ class TikTokConnectionWrapper extends EventEmitter {
 
         // Connection State
         this.clientDisconnected = false;
-        this.reconnectEnabled = true;
+        this.reconnectEnabled = false;
         this.reconnectCount = 0;
         this.reconnectWaitMs = 1000;
         this.maxReconnectAttempts = 5;
