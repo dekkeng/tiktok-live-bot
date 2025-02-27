@@ -378,6 +378,10 @@ function addChatItem(color, data, text, cont) {
 						.replace("🔊", "")
 						.replace("🎶", "")
 						.replace("🎵", "")
+						.replace("พะโล้", "เธอ")
+						.replace("luk", "รัก")
+						.replace("ruk", "รัก")
+						.replace("luckเธอ", "รักเธอ")
 						.trim());
 		let songTable = $('#song-table tbody')
 		songTable.prepend(`
