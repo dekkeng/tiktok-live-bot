@@ -448,9 +448,10 @@ function addChatItem(color, data, text, cont) {
 	}
 }
 
-function addChatItem(data) {
+function addFollowItem(data) {
 	sounds.addSound(Config["sounds"]["follow"]);
 }
+
 function addShareItem(color, data, text, cont) {
 	let container = $('.sharecontainer'), sans = sanitize(text);
 	container.prepend(`<li class="list-group-item p-1">
