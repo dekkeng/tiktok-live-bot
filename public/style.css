@@ -57,7 +57,7 @@ a {
     width: 33vw;
 }
 
-.giftcontainer, .chatcontainer, .eventcontainer {
+.chatcontainer, .eventcontainer, .songcontainer {
     overflow-y: scroll;
     height: calc(100vh - 272px);
     word-wrap: break-word;
@@ -101,17 +101,17 @@ a {
 }
 
 .gifter-level, .team-level {
-    background: #7f0edd;
+    background: #3a0368;
     font-size: 12px;
     padding: 3px 5px 3px 2px;
     border-radius: 5px;
     margin:0 2px;
 }
 .gifter-level {
-    background: #2b47dd;
+    background: #011275;
 }
 .team-level {
-    background: #c63311;
+    background: #861b03;
 }
 
 /***!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Select 2 Dark Theme Style ***/

@@ -160,9 +160,24 @@
 		<div class="col-12 col-sm-6 col-md-4">
 			<div class="card mb-3">
 				<h5 class="card-header">
-					Gifts
+					ขอเพลง
 				</h5>
-				<ul class="list-group list-group-flush giftcontainer" id="giftcontainer"></ul>
+				
+				<div class="table-responsive overflow-auto songcontainer">
+					<textarea id="hidden" class="d-none"></textarea>
+					<table id="song-table" class="table-sort table table-dark table-striped table-hover table-sm">
+						<thead>
+							<tr>
+								<th class="col-4 text-break">Nickname</th>
+								<th class="col-6 text-break">Song</th>
+								<th class="col-2 text-break">Clear</th>
+							</tr>
+						</thead>
+						<tbody id="song-tbody">
+						</tbody>
+					</table>
+				</div>
+
 			</div>
 		</div>
 		<div class="col-12 col-sm-6 col-md-4 offset-sm-3 offset-md-0">
@@ -208,7 +223,7 @@
 				<div class="card-header">
 					<ul class="nav nav-tabs card-header-tabs" id="gifter-lists" role="tablist">
 						<li class="nav-item">
-							<button class="nav-link active" id="song-tab" data-bs-toggle="tab" data-bs-target="#song-tab-pane" type="button" role="tab" aria-controls="song-tab-pane" aria-selected="true">ขอเพลง</button>
+							<button class="nav-link active" id="gift-tab" data-bs-toggle="tab" data-bs-target="#gift-tab-pane" type="button" role="tab" aria-controls="gift-tab-pane" aria-selected="true">ของขวัญ</button>
 						</li>
 						<li class="nav-item">
 							<button class="nav-link" id="gifter-tab" data-bs-toggle="tab" data-bs-target="#gifter-tab-pane" type="button" role="tab" aria-controls="gifter-tab-pane" aria-selected="false">ผู้สนับสนุน</button>
@@ -219,21 +234,8 @@
 					</ul>
 				</div>
 				<div class="tab-content overflow-auto" id="myTabContent" style="max-height:32vh;height:32vh;">
-					<div class="tab-pane fade show active" id="song-tab-pane" role="tabpanel" aria-labelledby="song-tab" tabindex="0">
-						<div class="table-responsive overflow-auto" style="max-height:30vh;height:30vh;">
-							<textarea id="hidden" class="d-none"></textarea>
-							<table id="song-table" class="table-sort table table-dark table-striped table-hover table-sm">
-								<thead>
-									<tr>
-										<th class="col-4 text-break">Nickname</th>
-										<th class="col-6 text-break">Song</th>
-										<th class="col-2 text-break">Clear</th>
-									</tr>
-								</thead>
-								<tbody id="song-tbody">
-								</tbody>
-							</table>
-						</div>
+					<div class="tab-pane fade show active" id="gift-tab-pane" role="tabpanel" aria-labelledby="gift-tab" tabindex="0">
+						<ul class="list-group list-group-flush giftcontainer" id="giftcontainer"></ul>
 					</div>
 					<div class="tab-pane fade" id="gifter-tab-pane" role="tabpanel" aria-labelledby="gifter-tab" tabindex="0">
 						<div class="table-responsive overflow-auto" style="max-height:30vh;height:30vh;">
