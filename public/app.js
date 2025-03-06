@@ -374,6 +374,12 @@ connection.on('gift', (data) => {
 
 	addGiftItem(data);
 })
+
+connection.on('follow', (data) => {
+	addFollowItem(data);
+})
+
+
 // share, follow
 connection.on('social', (data) => {
 	//console.log('-- social --')
