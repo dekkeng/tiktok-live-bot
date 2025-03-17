@@ -387,6 +387,7 @@ function addChatItem(color, data, text, cont) {
 						.replaceAll("luk", "รัก")
 						.replaceAll("ruk", "รัก")
 						.replaceAll("luckเธอ", "รักเธอ")
+						.replaceAll("คถ", "คิดถึง")
 						.trim());
 		let songTable = $('#song-table tbody')
 		songTable.prepend(`
