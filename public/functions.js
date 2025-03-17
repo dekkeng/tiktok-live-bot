@@ -363,10 +363,13 @@ function addChatItem(color, data, text, cont) {
     let txt = text.toLowerCase()
     if (
 		txt.startsWith("🎧") || 
+		txt.endsWith("🎧") || 
 		txt.startsWith("🔈") || 
 		txt.startsWith("📢") || 
 		txt.startsWith("🔉") || 
 		txt.startsWith("🔊") || 
+		txt.startsWith("👂🏻") || 
+		txt.startsWith("🦻🏻") || 
 		txt.startsWith("🎶") || 
 		txt.startsWith("🎵")
 	) {
@@ -376,6 +379,8 @@ function addChatItem(color, data, text, cont) {
 						.replaceAll("📢", "")
 						.replaceAll("🔉", "")
 						.replaceAll("🔊", "")
+						.replaceAll("👂🏻", "")
+						.replaceAll("🦻🏻", "")
 						.replaceAll("🎶", "")
 						.replaceAll("🎵", "")
 						.replaceAll("พะโล้", "เธอ")
