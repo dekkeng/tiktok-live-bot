@@ -385,8 +385,9 @@ connection.on('social', (data) => {
 	//console.log('-- social --')
 	//console.log(data)
 	//console.log('-- social --')
-	if (window.settings.showFollows === "0") return;
+	//if (window.settings.showFollows === "0") return;
 
+	addFollowItem(data);
 	let color = data.displayType.includes('follow') ? '#ff005e' : '#2fb816';
 	let conta = data.displayType.includes('follow') ? '#followstotalcontainer,#alltotalcontainer' : '#sharestotalcontainer,#alltotalcontainer';
 	addChatItem(color, data, data.label.replace('{0:user}', ''), conta); //'.sharecontainer');
