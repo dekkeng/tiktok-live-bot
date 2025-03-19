@@ -13,10 +13,12 @@ body {
   transform: translate(-50%, -50%);
   min-width: 300px;
   min-height: 200px;
-  background-color: #fff;
+  background-color: #4d95f3;
+  color: white;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  z-index: 99999;
 }
 
 .c-pointer {cursor: pointer;}
