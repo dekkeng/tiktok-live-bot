@@ -6,7 +6,7 @@ body {
     --bs-nav-link-color: #e6f4ff;
 }
 /* Popup container */
-.popup {
+.nfd_popup {
   position: fixed;
   top: 50%;
   left: 50%;
